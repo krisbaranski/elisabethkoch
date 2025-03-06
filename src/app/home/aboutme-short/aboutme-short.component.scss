@@ -1,0 +1,132 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: 'Montserrat Regular', sans-serif;
+  text-wrap: balance;
+  margin: 6rem auto;
+}
+
+.boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1200px;
+  column-gap: 4rem;
+  row-gap: 4rem;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 450px;
+  height: auto;
+  padding: 2rem;
+
+  h3 {
+    font-family: 'Montserrat Light', sans-serif;
+    font-size: var(--size-2);
+    color: var(--color-light);
+    line-height: 1;
+  }
+
+  .handwrite {
+    font-family: 'Funky-signature';
+    font-size: 5rem;
+    color: var(--color-light);
+    margin: 1rem auto;
+    line-height: 1;
+  }
+
+  p {
+    font-size: var(--size--2);
+    font-weight: 400;
+    font-style: thin;
+    color: var(--color-dark);
+    text-align: left;
+    margin: 0.5rem auto;
+  }
+}
+
+span {
+  display: inline-flex;
+  margin: 1rem 0;
+}
+
+.link {
+  color: var(--color-light);
+  font-size: var(--size--1);
+  text-decoration: none;
+}
+
+.image {
+  width: 3rem;
+  margin-top: 2rem;
+  padding-bottom: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.link:hover .image {
+  animation-name: hover;
+  -moz-animation-name: hover;
+  animation: hover 1s ease-out infinite;
+}
+
+@keyframes hover {
+  0% {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+  50% {
+    -webkit-transform: translateX(2rem);
+    -ms-transform: translateX(2rem);
+    transform: translateX(2rem);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  justify-content: center;
+}
+
+///
+///
+/// MEDIA QUERIES
+@media screen and (max-width: 960px) {
+  .wrapper {
+    margin: 3rem auto;
+  }
+
+  .boxes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 0;
+    column-gap: 0;
+    padding: 1rem auto;
+  }
+
+  .box {
+    flex: 0 1 80vw;
+
+    .handwrite {
+      font-size: clamp(3rem, 8vw, 5rem);
+      justify-content: flex-start;
+    }
+
+    img {
+      height: auto;
+      max-width: 90vw;
+    }
+  }
+}

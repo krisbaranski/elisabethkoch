@@ -1,0 +1,24 @@
+<div class="slideshow-container" id="home">
+  <img
+    *ngIf="showImage"
+    class="img-slideshow"
+    src="assets/img/{{ images[currentImage] }}"
+    alt="Elisabeth Koch"
+  />
+</div>
+<div class="contain">
+  <div class="slideshow-overlay">
+    <div *ngIf="showImage" class="fadeIn">
+      <h2>{{ text_big[currentImage] | translate }}</h2>
+      <h1>
+        {{ headline[currentImage] | translate }}
+      </h1>
+      <p>
+        {{ text_small[currentImage] | translate }}
+      </p>
+      <span class="offer">
+        <a routerLink="contact">{{ 'home.button_offer' | translate }}</a>
+      </span>
+    </div>
+  </div>
+</div>

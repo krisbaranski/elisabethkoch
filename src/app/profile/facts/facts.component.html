@@ -1,0 +1,38 @@
+<div class="wrapper" id="facts">
+  <div class="flex">
+    <div class="text">
+      <h3>{{ 'profile.facts.title' | translate }}</h3>
+      <h6>{{ 'profile.facts.title_1' | translate }}</h6>
+      <p>{{ 'profile.facts.text_1' | translate }}</p>
+    </div>
+
+    <div class="accordion">
+      <details>
+        <summary>{{ 'profile.facts.title_2' | translate }}</summary>
+        <ul>
+          <li class="list" *ngFor="let text of text_2">
+            {{ text | translate }}
+          </li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>{{ 'profile.facts.title_3' | translate }}</summary>
+        <ul>
+          <li class="list" *ngFor="let text of text_3">
+            {{ text | translate }}
+          </li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>{{ 'profile.facts.title_4' | translate }}</summary>
+        <ul>
+          <li class="list" *ngFor="let text of text_4">
+            {{ text | translate }}
+          </li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</div>

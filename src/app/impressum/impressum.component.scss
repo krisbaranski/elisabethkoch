@@ -1,0 +1,34 @@
+div {
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 93px;
+  width: min(100%, 800px);
+  margin-inline: auto;
+  padding: 30px;
+  font-family: 'Montserrat Regular', sans-serif;
+  background-color: rgba(255, 255, 255, 0.4);
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 300;
+  }
+
+  p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    text-wrap: balance;
+    margin: 0 15px;
+  }
+}
+
+@media (min-width: 40em) {
+  div {
+    margin-top: 100px;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+  }
+}

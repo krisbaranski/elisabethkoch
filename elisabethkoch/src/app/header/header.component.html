@@ -1,0 +1,198 @@
+<header [ngClass]="{ 'sticky-menu': isSticky, 'open-menu': isOpen }">
+  <menu>
+    <mat-toolbar>
+      <div class="logo">
+        <img src="assets/img/logo_darkblue.svg" alt="logo" routerLink="/" />
+        <!-- <img
+          [src]="
+            isSticky
+              ? 'assets/img/logo_darkblue.svg'
+              : isOpen
+              ? 'assets/img/logo_darkblue.svg'
+              : 'assets/img/logo_white.png'
+          "
+          alt="logo"
+          routerLink="/"
+        /> -->
+      </div>
+      <div class="menu">
+        <div>
+          <a
+            class="top_menu_item"
+            [routerLinkActive]="'active'"
+            routerLink="trainings"
+            >{{ 'menu.trainings' | translate }}</a
+          >
+
+          <a
+            [matMenuTriggerFor]="courses"
+            class="top_menu_item title-sublinks"
+            [ngClass]="{ active: isActive('/courses') }"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: false }"
+            >{{ 'menu.courses' | translate }}</a
+          >
+          <mat-menu #courses="matMenu">
+            <div class="menu-item" (click)="goToPart('courses/women')">
+              {{ 'trainings.women.title_menu' | translate }}
+            </div>
+          </mat-menu>
+
+          <a
+            class="top_menu_item"
+            [routerLinkActive]="'active'"
+            routerLink="profile"
+            >{{ 'menu.profile' | translate }}</a
+          >
+
+          <!-- <a
+            class="top_menu_item"
+            [routerLinkActive]="'active'"
+            routerLink="blog"
+            >{{ 'menu.blog' | translate }}</a
+          > -->
+          <a
+            class="top_menu_item"
+            [routerLinkActive]="'active'"
+            routerLink="contact"
+            >{{ 'menu.contact' | translate }}</a
+          >
+        </div>
+
+        <!-- Spacer -->
+        <!-- 
+        <div class="spacer">
+          <p>|</p>
+        </div>
+        // Translation links
+        <div class="translate" [class.darkLinks]="darkMode">
+          // Show German link only if the current language is not German
+          <a
+            *ngIf="currentLanguage !== 'de'"
+            class="langLink top_menu_item"
+            (click)="changeLanguage('de')"
+            >DE</a
+          >
+
+          // Show English link only if the current language is not English
+          <a
+            *ngIf="currentLanguage !== 'en'"
+            class="langLink top_menu_item"
+            (click)="changeLanguage('en')"
+            >EN</a
+          >
+        </div> -->
+      </div>
+
+      <!-- MOBILE MENU HAMBURGER  -->
+      <button
+        mat-icon-button
+        id="menuIcon"
+        (click)="sidenav.toggle()"
+        aria-label="Menu icon"
+      >
+        <mat-icon>|||</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- SIDEMENU MOBILE -->
+    <mat-sidenav-container class="sidenav">
+      <mat-sidenav
+        #sidenav
+        mode="side"
+        [(opened)]="isSidenavOpen"
+        (opened)="onSidenavOpened()"
+        (closed)="onSidenavClosed()"
+        [fixedInViewport]="true"
+        [fixedTopGap]="90"
+        (click)="sidenav.close()"
+      >
+        <div class="sidebar_items">
+          <a
+            class="sidebar_item"
+            (click)="sidenav.close()"
+            (click)="navigateAndClose('trainings')"
+            [routerLinkActive]="'active'"
+            routerLink="trainings"
+            >{{ 'menu.trainings' | translate }}</a
+          >
+
+          <a
+            (click)="onSidemenuClick($event)"
+            [matMenuTriggerFor]="courses"
+            class="sidebar_item"
+            [routerLinkActive]="'active'"
+            >{{ 'menu.courses' | translate }}</a
+          >
+          <mat-menu #courses="matMenu">
+            <div (click)="goToPart('courses/women')">
+              {{ 'trainings.women.title_menu' | translate }}
+            </div>
+          </mat-menu>
+
+          <a
+            class="sidebar_item"
+            (click)="sidenav.close()"
+            (click)="navigateAndClose('profile')"
+            [routerLinkActive]="'active'"
+            routerLink="profile"
+            >{{ 'menu.profile' | translate }}</a
+          >
+          <!-- <a
+            class="sidebar_item"
+            (click)="sidenav.close()"
+            (click)="navigateAndClose('blog')"
+            [routerLinkActive]="'active'"
+            routerLink="blog"
+            >{{ 'menu.blog' | translate }}</a
+          > -->
+          <a
+            class="sidebar_item"
+            (click)="sidenav.close()"
+            (click)="navigateAndClose('contact')"
+            [routerLinkActive]="'active'"
+            routerLink="contact"
+            >{{ 'menu.contact' | translate }}</a
+          >
+        </div>
+
+        <!-- Spacer -->
+        <div class="spacer"></div>
+
+        <!--
+        <div class="translate_sidebar">
+          <a
+            class="langLink sidebar_item"
+            *ngIf="currentLanguage !== 'de'"
+            (click)="changeLanguage('de')"
+            >DE</a
+          >
+          <a
+            class="langLink sidebar_item"
+            *ngIf="currentLanguage !== 'en'"
+            (click)="changeLanguage('en')"
+            >EN</a
+          >
+        </div> -->
+
+        <!-- Social links -->
+        <div class="social_sidebar">
+          <a
+            (click)="sidenav.close()"
+            href="https://instagram.com/stimme_u_gelungener_auftritt"
+            target="_blank"
+          >
+            <img src="./assets/img/instagram.svg" alt="instagram" />
+          </a>
+          <a
+            (click)="sidenav.close()"
+            href="https://linkedin.com/in/elisabeth-koch-stimmtraining"
+            target="_blank"
+          >
+            <img src="./assets/img/linkedin.svg" alt="linkedin" />
+          </a>
+        </div>
+      </mat-sidenav>
+    </mat-sidenav-container>
+  </menu>
+</header>
